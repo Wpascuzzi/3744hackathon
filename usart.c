@@ -37,8 +37,8 @@ void USARTF0_INIT(void)
   /* enable receiver and/or transmitter systems */
 	USARTF0.CTRLB = USART_RXEN_bm | USART_TXEN_bm;
 
-  /* enable interrupt (optional) */
-	/* USARTF0.CTRLA = USART_RXCINTLVL_MED_gc; */
+  // enable interrupt (optional) 
+	 USARTF0.CTRLA = USART_RXCINTLVL_MED_gc; 
 }
 
 /*****************************************************************************

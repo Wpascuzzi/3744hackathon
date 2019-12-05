@@ -6,6 +6,7 @@
  */ 
 
 #include <avr/io.h>
+# include <avr/interrupt.h>
 #ifndef GPIO_H_
 #define GPIO_H_
 
@@ -14,6 +15,8 @@ void PORTA_INIT(void);
 void PORTC_INIT(void);
 
 void PORTF_INIT(void);
+
+void PORTE_INIT(void);
 
 
 
