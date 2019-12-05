@@ -18,6 +18,7 @@ void PORTF_INIT(void);
 
 void PORTE_INIT(void);
 
+void PORTD_INIT(void);
 
 
 #endif /* GPIO_H_ */

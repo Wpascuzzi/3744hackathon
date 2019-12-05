@@ -42,5 +42,5 @@ void PORTF_INIT(void)
 void PORTD_INIT(void)
 {
 	PORTD.DIRSET = PIN4_bm | PIN5_bm | PIN6_bm;
-	PORTD.OUTCLR = PIN4_bm | PIN5_bm | PIN6_bm;
+	PORTD.OUTSET = PIN4_bm | PIN5_bm | PIN6_bm;
 }
