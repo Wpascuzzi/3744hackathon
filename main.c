@@ -19,6 +19,7 @@ volatile uint8_t otherReady = 0;
 volatile uint8_t gameState = 0;
 volatile uint8_t s1Set = 0;
 volatile uint8_t receivedSet = 0;
+volatile uint8_t receivedData = 0;
 
 int main(void)
 {
@@ -29,6 +30,7 @@ int main(void)
 	PORTF_INIT();
 	PORTE_INIT();
 	USARTF0_INIT();
+	PORTD_INIT();
 
 	PMIC.CTRL |= PMIC_MEDLVLEN_bm; //enable mid lvl interrupts
 	sei();
@@ -42,13 +44,6 @@ int main(void)
 			switchData = PORTA.IN;
 			ledData = switchData;
 			PORTC.OUT = ledData;
-			
-			if(receivedSet)
-			{
-				if(USARTF0_in_char() == 'r')
-				otherReady = 1;
-				receivedSet = 0;
-			}
 			
 			//debouncing
 			//TCC0.CTRLA = TC_CLKSEL_DIV1024_gc;
@@ -64,8 +59,9 @@ int main(void)
 		
 		//waiting stage
 		case 1:
-			PORTD_OUTSET = PIN6_bm; //sets blue pin
+			PORTD_OUTCLR = PIN6_bm; //sets blue pin
 			USARTF0_out_char('r'); //sends ready
+			
 			
 			if(selfReady && otherReady)
 			{
@@ -83,24 +79,8 @@ int main(void)
 		break;
 		
 		}
+	
 		
-		//test comment
-		//Preparation state, leds mapped directly
-		if(attacker)
-		{
-		switchData = PORTA.IN;
-		ledData = switchData;
-		PORTC.OUT = ledData;
-		USARTF0_out_char(switchData);
-		}
-		
-		//defender code
-		if(!attacker)
-		{
-		ledData = USARTF0_in_char();
-		PORTC.OUT = ledData;
-		}
-		 
 	}
 }
 
@@ -116,5 +96,10 @@ ISR(PORTE_INT0_vect)
 
 ISR(USARTF0_RXC_vect)
 {
-	receivedSet = 1;
+	
+	receivedData = USARTF0_in_char();
+	if ((gameState == 0 || gameState == 1) & receivedData == 'r')
+	{
+		otherReady = 1;
+	}
 }
