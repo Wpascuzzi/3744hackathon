@@ -84,8 +84,7 @@ int main(void)
 		
 		}
 		
-		
-		//TODO: set up different game states
+		//test comment
 		//Preparation state, leds mapped directly
 		if(attacker)
 		{
