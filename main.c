@@ -41,6 +41,8 @@ int main(void)
 		{
 		//preparation stage
 		case 0:
+			PORTD_OUTSET = PIN4_bm | PIN5_bm | PIN6_bm;
+			PORTD.OUTCLR = PIN5_bm;
 			switchData = PORTA.IN;
 			ledData = switchData;
 			PORTC.OUT = ledData;
@@ -59,6 +61,7 @@ int main(void)
 		
 		//waiting stage
 		case 1:
+			PORTD_OUTSET = PIN4_bm | PIN5_bm | PIN6_bm;
 			PORTD_OUTCLR = PIN6_bm; //sets blue pin
 			USARTF0_out_char('r'); //sends ready
 			
@@ -73,8 +76,9 @@ int main(void)
 		//transmitting stage
 		case 2:
 		
-			PORTD_OUTCLR = PIN6_bm;
-			PORTD_OUTSET = PIN4_bm;
+			PORTD_OUTSET = PIN4_bm | PIN5_bm | PIN6_bm;
+			PORTD_OUTCLR = PIN4_bm;
+			
 			
 		break;
 		
