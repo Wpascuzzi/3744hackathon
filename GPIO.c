@@ -14,7 +14,7 @@ void PORTA_INIT(void)
 
 void PORTC_INIT(void)
 {
-	PORTA.DIRSET = 0xFF; //sets all of PORTF to Output
+	PORTC.DIRSET = 0xFF; //sets all of PORTF to Output
 	
 }
 void PORTF_INIT(void)

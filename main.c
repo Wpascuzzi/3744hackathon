@@ -14,11 +14,12 @@ int main(void)
 {
 	uint8_t switchData = 0;
 	uint8_t ledData = 0;
+	uint8_t attacker = 1;
 	
 	PORTA_INIT();
 	PORTC_INIT();
-	//PORTF_INIT();
-	//USARTF0_INIT();
+	PORTF_INIT();
+	USARTF0_INIT();
     /* Replace with your application code */
     while (1) 
     {
@@ -26,10 +27,19 @@ int main(void)
 		
 		//TODO: set up different game states
 		//Preparation state, leds mapped directly
-		
+		if(attacker)
+		{
 		switchData = PORTA.IN;
 		ledData = switchData;
 		PORTC.OUT = ledData;
-    }
+		USARTF0_out_char(switchData);
+		}
+		if(!attacker)
+		{
+		ledData = USARTF0_in_char();
+		PORTC.OUT = ledData;
+		}
+		 
+	}
 }
 
