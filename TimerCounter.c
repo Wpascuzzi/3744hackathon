@@ -12,7 +12,7 @@
 #define prescaler TC_CLKSEL_DIV1024_gc //1024 prescaler
 
 
-int period = 1*(2000000/1024);
+int period = .2*(2000000/1024);
 
 
 void timer_init(uint8_t interrupts)

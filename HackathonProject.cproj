@@ -29,7 +29,7 @@
     <eraseonlaunchrule>0</eraseonlaunchrule>
     <EraseKey />
     <avrtool>com.atmel.avrdbg.tool.edbg</avrtool>
-    <avrtoolserialnumber>ATMLEDBGC00000000631</avrtoolserialnumber>
+    <avrtoolserialnumber>ATMLEDBGC00000000722</avrtoolserialnumber>
     <avrdeviceexpectedsignature>0x1E974C</avrdeviceexpectedsignature>
     <avrtoolinterface>PDI</avrtoolinterface>
     <com_atmel_avrdbg_tool_edbg>
@@ -40,7 +40,7 @@
         <InterfaceName>PDI</InterfaceName>
       </ToolOptions>
       <ToolType>com.atmel.avrdbg.tool.edbg</ToolType>
-      <ToolNumber>ATMLEDBGC00000000631</ToolNumber>
+      <ToolNumber>ATMLEDBGC00000000722</ToolNumber>
       <ToolName>EDBG</ToolName>
     </com_atmel_avrdbg_tool_edbg>
     <avrtoolinterfaceclock>4000000</avrtoolinterfaceclock>
@@ -130,6 +130,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="noise.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="TimerCounter.c">
