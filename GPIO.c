@@ -22,10 +22,10 @@ void PORTC_INIT(void)
 void PORTE_INIT(void)
 {
 	PORTE.DIRCLR = PIN0_bm | PIN1_bm; //set e1 and e0 to be input
-	PORTE.INT0MASK =  PIN0_bm; //maks e1 and e0
-	PORTE.INT1MASK =  PIN1_bm;
+	PORTE.INT0MASK =  PIN0_bm; //defender set/score
+	PORTE.INT1MASK =  PIN1_bm; //ready button
 	PORTE.INTCTRL = 0b1010; //sets to midlvl interrupts
-	PORTE.PIN0CTRL = 0b010;
+	PORTE.PIN0CTRL = 0b011;
 	PORTE.PIN1CTRL = 0b010;
 	
 }
