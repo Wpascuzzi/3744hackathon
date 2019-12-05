@@ -17,7 +17,8 @@ uint8_t attacker = 1;
 volatile uint8_t selfReady = 0;
 volatile uint8_t otherReady = 0;
 volatile uint8_t gameState = 0;
-voaltile uint8_t s1Set = 0;
+volatile uint8_t s1Set = 0;
+volatile uint8_t receivedSet = 0;
 
 int main(void)
 {
@@ -42,9 +43,12 @@ int main(void)
 			ledData = switchData;
 			PORTC.OUT = ledData;
 			
-			if(USARTF0_in_char() == 'r')
-			otherReady = 1;
-			
+			if(receivedSet)
+			{
+				if(USARTF0_in_char() == 'r')
+				otherReady = 1;
+				receivedSet = 0;
+			}
 			
 			//debouncing
 			//TCC0.CTRLA = TC_CLKSEL_DIV1024_gc;
@@ -109,4 +113,9 @@ ISR(PORTE_INT0_vect)
 	//s1 set
 	s1Set = 1;
 	
+}
+
+ISR(USARTF0_RXC_vect)
+{
+	receivedSet = 1;
 }
