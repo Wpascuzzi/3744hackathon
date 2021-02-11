@@ -1,5 +1,3 @@
-# 3744hackathon
-
 # 3744hackathon Project
 
 This project is a simple game designed for the ATxMega128 microcontroller.
